@@ -76,6 +76,24 @@
     }
   }
 
+  /* ---------- 2b. CTA entrance animation ---------- */
+  var ctaReveal = $('.cta-reveal');
+  if (ctaReveal) {
+    if ('IntersectionObserver' in window) {
+      var ctaObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      ctaObserver.observe(ctaReveal);
+    } else {
+      ctaReveal.classList.add('is-visible');
+    }
+  }
+
   /* ---------- 3. Testimonial slider ---------- */
   $$('[data-slider]').forEach(function (slider) {
     var track = $('.slider-track', slider),
