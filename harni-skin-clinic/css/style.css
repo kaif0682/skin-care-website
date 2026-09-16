@@ -708,6 +708,99 @@ a.card:hover,
 }
 
 /* ---------- testimonials ---------- */
+.home-testimonials {
+  min-width: 0;
+  padding: 20px 0 12px;
+}
+
+.home-reviews-section {
+  padding-bottom: 28px;
+}
+
+.home-appointment-section {
+  padding-top: 28px;
+}
+
+.home-appointment-section .container {
+  max-width: 820px;
+}
+
+.home-testimonials .section-title {
+  margin-bottom: 20px;
+}
+
+.home-testimonials .slider {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.home-testimonials .slide>.grid {
+  gap: 0;
+}
+
+.home-testimonials .card {
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 28px;
+}
+
+.home-testimonials .card+.card {
+  border-left: 1px solid var(--line);
+}
+
+.home-testimonials .card p {
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.home-testimonials .card b,
+.home-testimonials .card small {
+  display: block;
+}
+
+.home-testimonials .card b {
+  color: var(--dark);
+}
+
+.home-testimonials .card small {
+  color: #7da3c9;
+}
+
+.home-appointment {
+  min-width: 0;
+  background: #f1f7fe;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.home-appointment .form-head {
+  align-items: flex-start;
+  margin-bottom: 26px;
+}
+
+.home-appointment .form-head h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+}
+
+.home-appointment .field {
+  margin-bottom: 16px;
+}
+
+.home-appointment .field input,
+.home-appointment .field select {
+  min-height: 54px;
+}
+
+.home-appointment .btn-block {
+  min-height: 52px;
+}
+
 .slider {
   overflow: hidden;
 }
@@ -1442,6 +1535,10 @@ a.card:hover,
     padding-top: 24px;
   }
 
+  .home-testimonials {
+    padding-top: 0;
+  }
+
   .hero-copy {
     padding-bottom: 8px;
     max-width: none;
@@ -1543,6 +1640,25 @@ a.card:hover,
   .container {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .home-reviews-section,
+  .home-appointment-section {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .home-testimonials .card {
+    padding: 22px 20px;
+  }
+
+  .home-testimonials .card+.card {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .home-appointment {
+    padding: 24px 20px;
   }
 
   .hero-features {
