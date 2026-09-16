@@ -681,6 +681,41 @@
       </section>
       <section class="section home-appointment-section">
         <div class="container">
+          <div class="home-appointment-copy">
+            <span class="home-appointment-kicker">Harni Skin Clinic</span>
+            <h2>Follow Your <em>Skin Journey</em></h2>
+            <p>
+              Personalized dermatology care for healthier skin and the
+              confidence it brings. Begin your journey with us today.
+            </p>
+            <p class="home-social-label">Join Our Skin Community</p>
+            <div class="home-social" aria-label="Social media links">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                <svg class="i" aria-hidden="true"><use href="#i-fb"></use></svg>
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <svg class="i" aria-hidden="true"><use href="#i-ig"></use></svg>
+              </a>
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+              >
+                <svg class="i" aria-hidden="true"><use href="#i-yt"></use></svg>
+              </a>
+            </div>
+          </div>
           <section
             class="panel home-appointment"
             aria-labelledby="home-appointment-title"
@@ -691,8 +726,8 @@
                   <use href="#i-calendar"></use></svg
               ></span>
               <div>
-                <h2 id="home-appointment-title">Book Your Consultation</h2>
-                <p>Take the first step towards healthier, happier skin.</p>
+                <h2 id="home-appointment-title">Book Your Appointment Now</h2>
+                <p>So our team can reach out to you on time.</p>
               </div>
             </div>
             <div class="alert" id="homeSuccess" role="status">
@@ -724,6 +759,22 @@
                 <span class="error" role="alert"></span>
               </div>
               <div class="field">
+                <label for="hEmail">Email</label>
+                <div class="input-wrap">
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-mail"></use></svg
+                  ><input
+                    id="hEmail"
+                    name="email"
+                    type="email"
+                    placeholder="Enter email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <span class="error" role="alert"></span>
+              </div>
+              <div class="field">
                 <label for="hPhone">Phone Number</label>
                 <div class="input-wrap">
                   <svg class="i" aria-hidden="true">
@@ -740,14 +791,12 @@
                 <span class="error" role="alert"></span>
               </div>
               <div class="field">
-                <label for="hConcern">Select Your Concern</label>
+                <label for="hConcern">Select Service</label>
                 <div class="input-wrap">
                   <svg class="i" aria-hidden="true">
                     <use href="#i-message"></use></svg
                   ><select id="hConcern" name="concern" required>
-                    <option value="" selected disabled>
-                      Select Your Concern
-                    </option>
+                    <option value="" selected disabled>Select Service</option>
                     <option value="Acne & Acne Scars">
                       Acne &amp; Acne Scars
                     </option>
@@ -784,8 +833,23 @@
                 </div>
                 <span class="error" role="alert"></span>
               </div>
+              <div class="field">
+                <label for="hClinic">Select Clinic</label>
+                <div class="input-wrap">
+                  <svg class="i" aria-hidden="true">
+                    <use href="#i-pin"></use></svg
+                  ><select id="hClinic" name="clinic" required>
+                    <option value="" selected disabled>Select Clinic</option>
+                    <option value="Harni Skin Clinic">Harni Skin Clinic</option>
+                  </select>
+                  <svg class="i chev" aria-hidden="true">
+                    <use href="#i-chev-down"></use>
+                  </svg>
+                </div>
+                <span class="error" role="alert"></span>
+              </div>
               <button class="btn btn-primary btn-block" type="submit">
-                Request Appointment
+                Make an Appointment
                 <svg class="i" aria-hidden="true">
                   <use href="#i-arrow"></use>
                 </svg>
@@ -964,7 +1028,7 @@
           ></a>
         </div>
         <p class="copyright">
-          &copy; 2024 Harni Skin Clinic.<br />All rights reserved.<br />Designed
+          &copy; 2026 Harni Skin Clinic.<br />All rights reserved.<br />Designed
           for Healthier Tomorrows.
         </p>
       </div>

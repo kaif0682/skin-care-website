@@ -722,23 +722,89 @@ a.card:hover,
   isolation: isolate;
   overflow: hidden;
   background: url("../assets/images/Clinic Contact Banner B.png") center center / cover no-repeat;
-  padding-top: 28px;
-  padding-bottom: 28px;
+  min-height: 480px;
+  padding: 42px 0;
 }
 
 .home-appointment-section::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(226, 239, 251, .46);
+  background: linear-gradient(90deg, rgba(5, 47, 61, .82) 0%, rgba(5, 47, 61, .48) 42%, rgba(226, 239, 251, .08) 72%);
   content: "";
 }
 
 .home-appointment-section .container {
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 396px;
   max-width: var(--wrap);
+}
+
+.home-appointment-copy {
+  width: min(100%, 410px);
+  color: var(--white);
+  padding: 20px 0;
+}
+
+.home-appointment-kicker {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, .36);
+  border-radius: 999px;
+  background: rgba(22, 131, 228, .26);
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+}
+
+.home-appointment-copy h2 {
+  max-width: 390px;
+  margin: 18px 0 10px;
+  color: var(--white);
+  font-size: clamp(4rem, 4vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.home-appointment-copy h2 em {
+  display: block;
+  /* color: #d8ef4e; */
+  color: #1f83d9;
+  font-weight: 600;
+}
+
+.home-appointment-copy>p:not(.home-social-label) {
+  max-width: 370px;
+  color: rgba(255, 255, 255, .9);
+  font-size: 1.10rem;
+}
+
+.home-social-label {
+  margin-top: 52px;
+  color: var(--white);
+  font-size: 1.02rem;
+}
+
+.home-social {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.home-social a {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: rgba(22, 131, 228, .86);
+  color: var(--white);
+}
+
+.home-social .i {
+  width: 17px;
+  height: 17px;
 }
 
 .home-testimonials .section-title {
@@ -788,34 +854,56 @@ a.card:hover,
 }
 
 .home-appointment.panel {
-  width: min(100%, 520px);
+  width: min(100%, 420px);
   min-width: 0;
   background: var(--white);
   border-radius: 20px;
-  padding: 32px;
+  padding: 24px;
   box-shadow: 0 16px 42px rgba(14, 44, 85, .18);
 }
 
 .home-appointment .form-head {
   align-items: flex-start;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
 }
 
 .home-appointment .form-head h2 {
-  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+}
+
+.home-appointment form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 10px;
+}
+
+.home-appointment form .field:first-child,
+.home-appointment form .field:nth-child(4),
+.home-appointment form .btn-block,
+.home-appointment form .form-note {
+  grid-column: 1 / -1;
 }
 
 .home-appointment .field {
-  margin-bottom: 16px;
+  margin-bottom: 9px;
 }
 
 .home-appointment .field input,
 .home-appointment .field select {
-  min-height: 54px;
+  min-height: 44px;
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 
 .home-appointment .btn-block {
-  min-height: 52px;
+  min-height: 46px;
+  margin-top: 2px;
+  background: #3fa4b2;
+  border-color: #3fa4b2;
+}
+
+.home-appointment .form-note {
+  display: none;
 }
 
 .slider {
@@ -1507,6 +1595,22 @@ a.card:hover,
     padding: 48px 0;
   }
 
+  .home-appointment-section .container {
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+  }
+
+  .home-appointment-copy {
+    width: min(100%, 520px);
+    margin: 0 auto;
+  }
+
+  .home-appointment.panel {
+    align-self: center;
+  }
+
   .nav {
     position: fixed;
     inset: 68px 0 auto;
@@ -1679,11 +1783,38 @@ a.card:hover,
   }
 
   .home-appointment-section {
+    min-height: 0;
     background-position: 62% center;
   }
 
   .home-appointment-section .container {
     justify-content: center;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-appointment-copy {
+    width: min(100%, 420px);
+    margin: 0 auto 24px;
+    padding: 0;
+  }
+
+  .home-appointment-copy h2 {
+    font-size: 2rem;
+  }
+
+  .home-social-label {
+    margin-top: 26px;
+  }
+
+  .home-appointment form {
+    grid-template-columns: 1fr;
+  }
+
+  .home-appointment form .field,
+  .home-appointment form .btn-block {
+    grid-column: 1;
   }
 
   .hero-features {
