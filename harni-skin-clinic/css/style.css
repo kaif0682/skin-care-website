@@ -718,11 +718,27 @@ a.card:hover,
 }
 
 .home-appointment-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: url("../assets/images/Clinic Contact Banner B.png") center center / cover no-repeat;
   padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.home-appointment-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(226, 239, 251, .46);
+  content: "";
 }
 
 .home-appointment-section .container {
-  max-width: 820px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  max-width: var(--wrap);
 }
 
 .home-testimonials .section-title {
@@ -771,12 +787,13 @@ a.card:hover,
   color: #7da3c9;
 }
 
-.home-appointment {
+.home-appointment.panel {
+  width: min(100%, 520px);
   min-width: 0;
-  background: #f1f7fe;
+  background: var(--white);
   border-radius: 20px;
   padding: 32px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 16px 42px rgba(14, 44, 85, .18);
 }
 
 .home-appointment .form-head {
@@ -1659,6 +1676,14 @@ a.card:hover,
 
   .home-appointment {
     padding: 24px 20px;
+  }
+
+  .home-appointment-section {
+    background-position: 62% center;
+  }
+
+  .home-appointment-section .container {
+    justify-content: center;
   }
 
   .hero-features {
