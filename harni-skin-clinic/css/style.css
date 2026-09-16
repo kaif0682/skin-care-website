@@ -531,8 +531,8 @@ a.card:hover,
 .stats-section {
   position: relative;
   z-index: 4;
-  margin-top: -18px;
-  padding-bottom: 28px;
+  margin-top: 18px;
+  padding-bottom: 0px;
 }
 
 .stats-grid {
@@ -1042,6 +1042,54 @@ a.card:hover,
   bottom: 14px;
 }
 
+.location-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr);
+  gap: 48px;
+  align-items: stretch;
+}
+
+.location-details {
+  padding: 14px 0;
+}
+
+.location-details>.info-item {
+  margin-bottom: 30px;
+}
+
+.location-details .info-item p {
+  line-height: 1.75;
+}
+
+.location-contact {
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+}
+
+.location-contact .info-item {
+  margin-bottom: 22px;
+}
+
+.location-contact .info-item:last-child {
+  margin-bottom: 0;
+}
+
+.location-map {
+  min-height: 360px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+.location-map iframe {
+  min-height: 360px;
+}
+
+.location-map .btn {
+  background: var(--white);
+  border-color: var(--white);
+  box-shadow: 0 4px 14px rgba(14, 44, 85, .14);
+}
+
 /* ---------- CTA ---------- */
 .cta {
   position: relative;
@@ -1325,6 +1373,15 @@ a.card:hover,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .location-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .location-details {
+    padding: 0;
+  }
+
   .results-note {
     text-align: left;
     grid-column: 1 / -1;
@@ -1436,6 +1493,11 @@ a.card:hover,
   .map iframe,
   .map {
     min-height: 230px;
+  }
+
+  .location-map,
+  .location-map iframe {
+    min-height: 300px;
   }
 }
 
