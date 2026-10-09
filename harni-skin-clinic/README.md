@@ -47,4 +47,4 @@ Field names posted: `name`, `phone`, `email`, `concern`, `date`, `time`, `messag
 ## Clinic details to update
 
 Phone, WhatsApp number, email and map links are set in every page. Search and replace:
-`+919427845645`, `pankilpatel85@gmail.com`.
+`number `, `@gmail.com`.
