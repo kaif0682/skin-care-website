@@ -96,29 +96,111 @@
 
   /* ---------- 3. Testimonial slider ---------- */
   $$('[data-slider]').forEach(function (slider) {
-    var track = $('.slider-track', slider),
-        slides = $$('.slide', track),
+    var viewport = $('.slider', slider),
+        track = $('.slider-track', slider),
+        sourceSlides = $$('.slide', track),
         dots = $('.dots', slider),
-        index = 0;
-    if (slides.length < 2) return;
+        index = 0,
+        visible = 1,
+        timer,
+        resizeTimer;
+    if (sourceSlides.length < 2) return;
 
-    slides.forEach(function (_, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Go to testimonial group ' + (i + 1));
-      b.addEventListener('click', function () { go(i); });
-      dots.appendChild(b);
+    function getVisible() {
+      return window.innerWidth <= 560 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    }
+
+    function logicalIndex() {
+      return (index - visible + sourceSlides.length) % sourceSlides.length;
+    }
+
+    function updateDots() {
+      $$('button', dots).forEach(function (dot, number) {
+        dot.setAttribute('aria-current', number === logicalIndex() ? 'true' : 'false');
+      });
+    }
+
+    function move(animate) {
+      var step = viewport.clientWidth / visible;
+      if (animate) {
+        track.style.transition = 'none';
+        track.offsetWidth;
+        track.style.transition = '';
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = 'translateX(' + (-index * step) + 'px)';
+      updateDots();
+    }
+
+    function rebuild() {
+      var current = index === 0 ? 0 : logicalIndex();
+      $$('.is-clone', track).forEach(function (clone) { clone.remove(); });
+      visible = getVisible();
+      sourceSlides.slice(-visible).forEach(function (slide) {
+        var clone = slide.cloneNode(true);
+        clone.classList.add('is-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        track.insertBefore(clone, track.firstChild);
+      });
+      sourceSlides.slice(0, visible).forEach(function (slide) {
+        var clone = slide.cloneNode(true);
+        clone.classList.add('is-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+      index = visible + (current % sourceSlides.length);
+      move(false);
+      requestAnimationFrame(function () { track.style.transition = ''; });
+    }
+
+    function go(nextIndex, animate) {
+      index = nextIndex;
+      move(animate !== false);
+    }
+
+    function next() {
+      go(index + 1);
+    }
+
+    track.addEventListener('transitionend', function () {
+      if (index >= visible + sourceSlides.length) {
+        index -= sourceSlides.length;
+        move(false);
+        requestAnimationFrame(function () { track.style.transition = ''; });
+      } else if (index < visible) {
+        index += sourceSlides.length;
+        move(false);
+        requestAnimationFrame(function () { track.style.transition = ''; });
+      }
     });
 
-    function go(i) {
-      index = (i + slides.length) % slides.length;
-      track.style.transform = 'translateX(' + (-index * 100) + '%)';
-      slides.forEach(function (s, n) { s.setAttribute('aria-hidden', n !== index); });
-      $$('button', dots).forEach(function (d, n) { d.setAttribute('aria-current', n === index); });
-    }
+    sourceSlides.forEach(function (_, number) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Show testimonial ' + (number + 1));
+      dot.addEventListener('click', function () { go(visible + number); });
+      dots.appendChild(dot);
+    });
+
     $('.prev', slider).addEventListener('click', function () { go(index - 1); });
-    $('.next', slider).addEventListener('click', function () { go(index + 1); });
-    go(0);
+    $('.next', slider).addEventListener('click', next);
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(next, 3500);
+    }
+    function stopAuto() { clearInterval(timer); }
+    slider.addEventListener('mouseenter', stopAuto);
+    slider.addEventListener('mouseleave', startAuto);
+    slider.addEventListener('pointerenter', stopAuto);
+    slider.addEventListener('pointerleave', startAuto);
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(rebuild, 150);
+    });
+
+    rebuild();
+    startAuto();
   });
 
   /* ---------- 4. Form validation ---------- */

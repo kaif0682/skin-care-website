@@ -712,10 +712,32 @@ a.card:hover,
 .home-testimonials {
   min-width: 0;
   padding: 20px 0 12px;
+  background: #f1f3f7;
 }
 
 .home-reviews-section {
-  padding-bottom: 28px;
+  padding: 44px 0;
+}
+
+.home-reviews-section>.container {
+  max-width: 1240px;
+  padding: 44px 32px 30px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 12px 32px rgba(14, 44, 85, .06);
+}
+
+.home-testimonials .eyebrow,
+.home-testimonials .section-title {
+  text-align: center;
+}
+
+.home-testimonials .eyebrow {
+  margin-bottom: 8px;
+}
+
+.home-testimonials .section-title {
+  margin-bottom: 30px;
 }
 
 .home-appointment-section {
@@ -813,27 +835,34 @@ a.card:hover,
 }
 
 .home-testimonials .slider {
+  --testimonial-visible: 3;
   border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--white);
-  box-shadow: var(--shadow);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
-.home-testimonials .slide>.grid {
-  gap: 0;
+.home-testimonials .slider-track {
+  align-items: stretch;
 }
 
 .home-testimonials .card {
   min-width: 0;
   height: 100%;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(14, 44, 85, .06);
+  padding: 24px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
-.home-testimonials .card+.card {
-  border-left: 1px solid var(--line);
+.home-testimonials .card:hover {
+  transform: translateY(-4px);
+  border-color: #c6def3;
+  box-shadow: 0 12px 24px rgba(14, 44, 85, .12);
 }
 
 .home-testimonials .card p {
@@ -913,11 +942,13 @@ a.card:hover,
 
 .slider-track {
   display: flex;
-  transition: transform .35s ease;
+  transition: transform .55s cubic-bezier(.22, .61, .36, 1);
 }
 
 .slide {
-  min-width: 100%;
+  flex: 0 0 calc(100% / var(--testimonial-visible, 3));
+  min-width: 0;
+  padding: 0 6px;
 }
 
 .t-card {
@@ -987,6 +1018,11 @@ a.card:hover,
 .slider-nav button:hover {
   border-color: var(--primary);
   color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.slider-nav button:active {
+  transform: scale(.94);
 }
 
 .dots {
@@ -1002,10 +1038,12 @@ a.card:hover,
   border: 0;
   background: #c9dcee;
   cursor: pointer;
+  transition: transform .2s ease, background-color .2s ease;
 }
 
 .dots button[aria-current="true"] {
   background: var(--primary);
+  transform: scale(1.35);
 }
 
 /* ---------- forms ---------- */
@@ -1856,6 +1894,10 @@ a.card:hover,
     padding-top: 0;
   }
 
+  .home-testimonials .slider {
+    --testimonial-visible: 2;
+  }
+
   .hero-copy {
     padding-bottom: 8px;
     max-width: none;
@@ -2002,8 +2044,22 @@ a.card:hover,
     padding-bottom: 34px;
   }
 
+  .home-reviews-section>.container {
+    padding: 30px 16px 24px;
+    border-radius: 18px;
+  }
+
+  .home-testimonials .section-title {
+    margin-bottom: 22px;
+  }
+
   .home-testimonials .card {
     padding: 22px 20px;
+  }
+
+  .home-testimonials .slider {
+    --testimonial-visible: 1;
+    padding: 6px;
   }
 
   .home-testimonials .card+.card {
