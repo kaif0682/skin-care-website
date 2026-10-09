@@ -1,50 +1,132 @@
 # Harni Skin Clinic
 
-Static website — HTML5, CSS3 and vanilla JavaScript only. No frameworks, no build step.
-Open `index.html` in any browser, or upload the whole folder to any web host.
+Harni Skin Clinic is a static dermatology and aesthetic clinic website built with HTML, CSS, and vanilla JavaScript. The site promotes skin and hair treatment services, showcases patient results, shares testimonials, and provides a consultation booking flow through a front-end contact/appointment form.
 
-## Structure
+## Project Overview
 
+This project is a lightweight marketing website for a skin care clinic. It is intended to be easy to host on any static web server without a build process, dependency installation, or backend setup.
+
+The website includes:
+- A landing page with clinic messaging and service highlights
+- Dedicated pages for treatments, results, testimonials, and about information
+- Contact and appointment forms for lead capture
+- Responsive layout and interactive UI elements such as navigation and sliders
+
+## Key Features
+
+- Responsive clinic website for desktop and mobile viewing
+- Clear information architecture for treatments and patient outcomes
+- Multi-page static content structure
+- Client-side form validation for contact and appointment requests
+- Before/after treatment galleries and patient review sections
+- No framework or build tooling required
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript (vanilla)
+- Static image assets
+- Inline SVG icons
+
+## Project Structure
+
+```text
+harni-skin-clinic/
+├── index.html
+├── about.html
+├── treatments.html
+├── results.html
+├── testimonials.html
+├── contact.html
+├── appointment.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+├── assets/
+│   ├── images/
+│   └── icons/
+├── README.md
+└── (additional static files as needed)
 ```
-index.html · about.html · treatments.html · results.html
-testimonials.html · contact.html · appointment.html
-css/style.css      all styling (CSS variables at the top)
-js/script.js       menu, testimonial slider, form validation
-assets/images/     doctor photo, before/after photos, patient avatars
-assets/icons/      reserved (icons are an inline SVG sprite in each page)
+
+## Prerequisites
+
+To view and work with this project, you need:
+- A modern web browser
+- A local static file server or direct browser access to the HTML files
+- No package manager, database, or environment variables are required for the current static setup
+
+## Installation and Setup
+
+There is no dependency installation step for this project.
+
+### Option 1: Open directly in a browser
+
+Open `index.html` directly in a browser.
+
+### Option 2: Run a local static server
+
+From the project root, run:
+
+```bash
+cd harni-skin-clinic
+python -m http.server 8000
 ```
 
-## Changing the look
+Then open:
 
-Every colour lives in one place — the `:root` block at the top of `css/style.css`:
-
-```css
---primary   /* buttons, links, active nav */
---dark      /* headings */
---light     /* tinted section backgrounds */
---green     /* WhatsApp */
+```text
+http://localhost:8000/
 ```
 
-## Connecting a backend
+## How the Project Works
 
-Both forms (home page, appointment page, contact page) validate in the browser and then call
-`sendRequest()` at the bottom of `js/script.js`. It currently logs the data and shows the success
-message. To send it to a real API, replace the body of that one function:
+- `index.html` serves as the main landing page.
+- The other HTML pages provide treatment information, results, testimonials, contact details, and appointment booking.
+- `css/style.css` contains the styling, layout system, and color variables.
+- `js/script.js` handles menu interactions, testimonial slider behavior, and client-side form validation.
+- Form submissions currently trigger the front-end `sendRequest()` function, which logs the data to the console and displays the success state.
 
-```js
-function sendRequest(form, data) {
-  fetch(form.dataset.endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  }).then(/* show the success message */);
-}
-```
+## Form and API Notes
 
-The target URL is already on each form as `data-endpoint` (`/api/appointments`, `/api/contact`).
-Field names posted: `name`, `phone`, `email`, `concern`, `date`, `time`, `message`.
+The contact and appointment forms include client-side validation and are prepared for future API integration. In the current code, the form handler is intentionally non-production and does not send data to a live backend.
 
-## Clinic details to update
+If a real backend is later added, the logic in `js/script.js` can be replaced with a fetch-based API call.
 
-Phone, WhatsApp number, email and map links are set in every page. Search and replace:
-`number `, `@gmail.com`.
+## Screenshots and Demo Links
+
+No live deployment URL or screenshot gallery was found in the repository, so no verified public demo link is included here.
+
+## Development Notes
+
+- The project is intentionally static and does not use a framework.
+- Styling is centralized in `css/style.css` and the layout is page-based rather than component-driven.
+- The site assets are stored under `assets/`, including photos and graphical elements.
+
+## Recommended Improvements
+
+Potential next enhancements for this project include:
+- Connecting contact and appointment forms to a backend or email service
+- Adding analytics tracking for user engagement and conversion events
+- Replacing placeholder or generic content with finalized production copy
+- Adding SEO metadata, schema markup, and structured content improvements
+- Improving accessibility review and keyboard support
+
+## Contributing
+
+This repository does not currently include a formal contribution workflow or project-specific contribution guide. If you plan to make changes:
+
+1. Create a feature branch.
+2. Keep changes focused and aligned with the static site structure.
+3. Verify the site still renders correctly in a browser after edits.
+4. Update documentation when changing behavior, pages, or setup instructions.
+
+## License
+
+No explicit license file was found in the project root. Please confirm the intended licensing status before publishing or distributing the project publicly.
+
+## Summary
+
+Harni Skin Clinic is a static, responsive clinic website designed to present services and convert visitors into appointments. The project is simple to run locally, requires no build system, and is structured for easy customization by editing HTML, CSS, and JavaScript files.
