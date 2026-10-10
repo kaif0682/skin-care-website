@@ -95,9 +95,7 @@ The contact and appointment forms include client-side validation and are prepare
 
 If a real backend is later added, the logic in `js/script.js` can be replaced with a fetch-based API call.
 
-## Screenshots and Demo Links
 
-No live deployment URL or screenshot gallery was found in the repository, so no verified public demo link is included here.
 
 ## Development Notes
 
@@ -123,9 +121,7 @@ This repository does not currently include a formal contribution workflow or pro
 3. Verify the site still renders correctly in a browser after edits.
 4. Update documentation when changing behavior, pages, or setup instructions.
 
-## License
 
-No explicit license file was found in the project root. Please confirm the intended licensing status before publishing or distributing the project publicly.
 
 ## Summary
 
